@@ -32,23 +32,18 @@ spring:
           uri: lb://hotel-service
           predicates:
             - Path=/api/v1/hotels/**
-          filters:
-            - AuthFilter
 
         - id: rating-service
           uri: lb://rating-service
           predicates:
             - Path=/api/v1/rating/**
-          filters:
-            - AuthFilter
 
         - id: traveler-service
           uri: lb://traveler-service
           predicates:
-            - Path=/api/v1/travelers/**
+            - Path=/api/v1/auth/**,/api/v1/travelers/**
           filters:
             - AuthFilter
-
 logging:
   level:
     root: INFO
